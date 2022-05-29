@@ -15,6 +15,7 @@ public class MoneyBoxScript : MonoBehaviour
     public float TimeSpawn;
     public bool isCaseOpen = false;
     public int CaseMoneyCount = 4; //to do: random
+   // private Rigidbody2D _rigidbody;
 
 
     void Repeat()
@@ -25,7 +26,12 @@ public class MoneyBoxScript : MonoBehaviour
     {
 
         yield return new WaitForSeconds(TimeSpawn);
-        Instantiate(spawmObject, spawnPosition.position, Quaternion.identity);
+       // spawnPosition.position = new Vector3 (spawnPosition.position.x, spawnPosition.position.y, -1);//тут мен€й 
+        Instantiate(spawmObject,new Vector3(spawnPosition.position.x, spawnPosition.position.y, -1), Quaternion.identity);
+        //туть что-то пытаюсь
+     //  _rigidbody = spawmObject.AddComponent<Rigidbody2D>();
+      //  _rigidbody.AddForce(transform.up * 2, ForceMode2D.Impulse);
+        //spawmObject.isStatic = false;
         if (CaseMoneyCount > 0)
         {
             CaseMoneyCount--;
