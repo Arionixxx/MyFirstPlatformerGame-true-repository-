@@ -9,6 +9,7 @@ public class MoneyBoxScript : MonoBehaviour
     public GameObject coin;
 
     private Animator animator;
+    private Animator coinAnimator;
 
     public Transform spawnPosition;
     public GameObject spawmObject;
@@ -28,21 +29,28 @@ public class MoneyBoxScript : MonoBehaviour
         yield return new WaitForSeconds(TimeSpawn);
        // spawnPosition.position = new Vector3 (spawnPosition.position.x, spawnPosition.position.y, -1);//тут мен€й 
         Instantiate(spawmObject,new Vector3(spawnPosition.position.x, spawnPosition.position.y, -1), Quaternion.identity);
+        coinAnimator = spawmObject.GetComponent<Animator>();
         //туть что-то пытаюсь
      //  _rigidbody = spawmObject.AddComponent<Rigidbody2D>();
       //  _rigidbody.AddForce(transform.up * 2, ForceMode2D.Impulse);
         //spawmObject.isStatic = false;
         if (CaseMoneyCount > 0)
         {
+            coinAnimator.SetTrigger("coinsDrop");
             CaseMoneyCount--;
             Repeat();
-            
+
+        }
+        else
+        {
+            coinAnimator.SetTrigger("coinsDropOff");
         }
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        
        
 
     }
@@ -58,6 +66,7 @@ public class MoneyBoxScript : MonoBehaviour
                 animator.SetTrigger("boxTrigger");
                 StartCoroutine(SpawmCD());
                 isCaseOpen = true;
+                
             }
         }
     }

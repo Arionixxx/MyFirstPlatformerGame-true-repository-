@@ -8,6 +8,7 @@ TagManager:
   - Coins
   - NyanCat
   - MoneyBox
+  - Fire
   layers:
   - Default
   - TransparentFX
