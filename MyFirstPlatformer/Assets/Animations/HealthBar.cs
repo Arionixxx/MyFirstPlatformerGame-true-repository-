@@ -9,10 +9,14 @@ public class HealthBar : MonoBehaviour
     public float fill;
     public GameObject fire;
     public bool damageInFire = false;
+   // public GameObject player;
+    private Rigidbody2D _rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
         fill = 1f;
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -38,6 +42,17 @@ public class HealthBar : MonoBehaviour
         if (collision.tag == "Fire")
         {
             damageInFire = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)//Mace hit player
+    {
+        if (collision.tag == "Mace")
+        {
+            Debug.Log("Mace!");
+            fill -= Time.deltaTime * 0.2f;
+            _rigidbody.AddForce(transform.up * 0.25f, ForceMode2D.Impulse);
+            _rigidbody.AddForce(-transform.right * 0.05f, ForceMode2D.Impulse);
         }
     }
 }
