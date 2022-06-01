@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public float fill;
     public GameObject fire;
     public bool damageInFire = false;
-   // public GameObject player;
+    public GameObject healthPotion;
     private Rigidbody2D _rigidbody;
 
     // Start is called before the first frame update
@@ -36,6 +36,13 @@ public class HealthBar : MonoBehaviour
         {
             damageInFire = true;
         }
+        if (collision.tag == "healthPotion")
+        {
+            Destroy(collision.gameObject);
+            
+            fill = 1f;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -55,4 +62,6 @@ public class HealthBar : MonoBehaviour
             _rigidbody.AddForce(-transform.right * 0.05f, ForceMode2D.Impulse);
         }
     }
+
+    
 }
