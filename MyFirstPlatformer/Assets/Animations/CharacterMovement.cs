@@ -16,6 +16,10 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private CharactersAnimations _animations;
     [SerializeField] private SpriteRenderer _characterSprite;
+    [SerializeField] private SpriteRenderer _fireballSprite;
+
+    public GameObject fireball;
+
     // Start is called before the first frame update
    private void Start()
     {
@@ -36,6 +40,12 @@ public class CharacterMovement : MonoBehaviour
                 _animations.Jump();
             }
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            _fireballSprite.flipX = _characterSprite.flipX;
+            Atack();
+
+        }
 
         _animations.IsMoving = _isMoving;
         _animations.IsFlying = IsFlying();
@@ -52,6 +62,14 @@ public class CharacterMovement : MonoBehaviour
         }
        // _animations.IsMoving = _isMoving;
     }
+
+    private void Atack()
+    {
+        Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
+        
+
+    }
+
     private void Jump()
     {
       //  Debug.Log("Jump!");
