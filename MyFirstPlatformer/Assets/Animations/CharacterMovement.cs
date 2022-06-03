@@ -17,19 +17,26 @@ public class CharacterMovement : MonoBehaviour
     private CharactersAnimations _animations;
     [SerializeField] private SpriteRenderer _characterSprite;
     [SerializeField] private SpriteRenderer _fireballSprite;
+    public static SpriteRenderer fireForMovementScript;
 
     public GameObject fireball;
+    private Vector2 _fireballMove;
+    private float TimeBtwSFireballs;
+    public float startTimeBtwFireballs;
+  
 
     // Start is called before the first frame update
-   private void Start()
+    private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<CharactersAnimations>();
+        
     }
 
     // Update is called once per frame
   private void Update()
     {
+        fireForMovementScript = _fireballSprite;
         Move();
         CheckGround();
         if (Input.GetKeyDown(KeyCode.Space))
@@ -40,13 +47,24 @@ public class CharacterMovement : MonoBehaviour
                 _animations.Jump();
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
+
+        if (TimeBtwSFireballs <= 0)
         {
-            _fireballSprite.flipX = _characterSprite.flipX;
-            Atack();
+            if (Input.GetKey(KeyCode.F))
+            {
+                _fireballSprite.flipX = _characterSprite.flipX;
+                Atack();
+                TimeBtwSFireballs = startTimeBtwFireballs;
 
+
+
+            }
         }
-
+        else
+        {
+            TimeBtwSFireballs -= Time.deltaTime;
+        }
+     //   _fireballMove.x +=  10 * Time.deltaTime;
         _animations.IsMoving = _isMoving;
         _animations.IsFlying = IsFlying();
     }
@@ -67,6 +85,7 @@ public class CharacterMovement : MonoBehaviour
     {
         Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
         
+        // _fireballMove = new Vector2(fireball.transform.position.x, fireball.transform.position.y);
 
     }
 

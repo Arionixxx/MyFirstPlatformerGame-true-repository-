@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8053135235655176607}
   - component: {fileID: 8053135235655176606}
   - component: {fileID: 8053135235655176605}
+  - component: {fileID: 3275842391630224512}
   m_Layer: 0
   m_Name: Fire_Meteors_Large_A_32x32_0
   m_TagString: Untagged
@@ -105,3 +106,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3275842391630224512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8053135235655176604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9017499e280f124880e57ee2c1e7a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  lifetime: 1
+  damage: 1
+  whatIsSolid:
+    serializedVersion: 2
+    m_Bits: 47

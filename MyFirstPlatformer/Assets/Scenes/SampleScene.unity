@@ -776,6 +776,7 @@ MonoBehaviour:
   _characterSprite: {fileID: 208290555}
   _fireballSprite: {fileID: 8053135235655176606, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
   fireball: {fileID: 8053135235655176604, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
+  startTimeBtwFireballs: 0.25
 --- !u!114 &208290559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10138,6 +10139,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1658248304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8053135235655176604, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
+  m_PrefabInstance: {fileID: 8053135235157478892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1658248308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658248304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9017499e280f124880e57ee2c1e7a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
+  lifetime: 1
+  damage: 1
+  whatIsSolid:
+    serializedVersion: 2
+    m_Bits: 47
 --- !u!1 &1662222141
 GameObject:
   m_ObjectHideFlags: 0
