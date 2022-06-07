@@ -776,7 +776,8 @@ MonoBehaviour:
   _characterSprite: {fileID: 208290555}
   _fireballSprite: {fileID: 8053135235655176606, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
   fireball: {fileID: 8053135235655176604, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-  startTimeBtwFireballs: 0.25
+  startTimeBtwFireballs: 0.5
+  startTimeDestroyFireball: 0.5
 --- !u!114 &208290559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10139,29 +10140,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1658248304 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8053135235655176604, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-  m_PrefabInstance: {fileID: 8053135235157478892}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1658248308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658248304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9017499e280f124880e57ee2c1e7a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  lifetime: 1
-  damage: 1
-  whatIsSolid:
-    serializedVersion: 2
-    m_Bits: 47
 --- !u!1 &1662222141
 GameObject:
   m_ObjectHideFlags: 0
@@ -12735,63 +12713,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc0a1bc23e4089446a44a72d2f8f501b, type: 3}
---- !u!1001 &8053135235157478892
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8053135235655176604, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_Name
-      value: Fire_Meteors_Large_A_32x32_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_RootOrder
-      value: 52
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053135235655176607, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
 --- !u!1001 &9116437185159374711
 PrefabInstance:
   m_ObjectHideFlags: 0

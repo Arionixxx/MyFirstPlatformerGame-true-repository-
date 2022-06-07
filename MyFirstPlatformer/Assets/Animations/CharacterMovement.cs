@@ -23,19 +23,23 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 _fireballMove;
     private float TimeBtwSFireballs;
     public float startTimeBtwFireballs;
-  
+    private float timeDestroyFireball;
+    public float startTimeDestroyFireball;
+
 
     // Start is called before the first frame update
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<CharactersAnimations>();
+        timeDestroyFireball = startTimeDestroyFireball;
         
     }
 
     // Update is called once per frame
   private void Update()
     {
+        
         fireForMovementScript = _fireballSprite;
         Move();
         CheckGround();
@@ -55,7 +59,7 @@ public class CharacterMovement : MonoBehaviour
                 _fireballSprite.flipX = _characterSprite.flipX;
                 Atack();
                 TimeBtwSFireballs = startTimeBtwFireballs;
-
+                
 
 
             }
@@ -63,6 +67,15 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             TimeBtwSFireballs -= Time.deltaTime;
+        }
+       
+        if (timeDestroyFireball > 0)
+        {
+            timeDestroyFireball -= Time.deltaTime;
+        }else
+        {
+            Destroy(fireball.gameObject);
+            timeDestroyFireball = startTimeDestroyFireball;
         }
      //   _fireballMove.x +=  10 * Time.deltaTime;
         _animations.IsMoving = _isMoving;
@@ -84,6 +97,8 @@ public class CharacterMovement : MonoBehaviour
     private void Atack()
     {
         Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
+
+        
         
         // _fireballMove = new Vector2(fireball.transform.position.x, fireball.transform.position.y);
 
