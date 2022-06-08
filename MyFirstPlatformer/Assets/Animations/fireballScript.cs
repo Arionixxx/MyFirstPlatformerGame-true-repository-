@@ -11,7 +11,8 @@ public class fireballScript : MonoBehaviour
     public GameObject fireball;
     private float fireTimee;
     private Animator animator;
-    private float kd;
+    public float kd;
+    public float kdCol;
 
 
 
@@ -22,6 +23,7 @@ public class fireballScript : MonoBehaviour
     {
         fireTimee = 0.8f;
         kd = 0.2f;
+        kdCol = 0.2f;
         animator = GetComponent<Animator>();
     }
 
@@ -41,11 +43,11 @@ public class fireballScript : MonoBehaviour
             }
             else
             {
-                Destroy(fireball);//ne razrushaet
+                Destroy(fireball);//
                 
-                Debug.Log("destroyed!");//voobshe nikak(((
+                Debug.Log("destroyed!");//
                 fireTimee = 0.8f;
-                kd = 0.2f; 
+                kd = 0.2f;
             }
         }
         //if (Input.GetKey(KeyCode.F))
@@ -74,24 +76,30 @@ public class fireballScript : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player")
         {
-           // float kdCol = 0.01f;
+            
             animator.SetTrigger("fireDestroy");
-           // if (kdCol >= 0)
+         //   if (kdCol > 0)
             {
-             //   kdCol -= Time.deltaTime;
+          //      kdCol -= 100 * Time.deltaTime;//ne pashet((
             }
-           // else
+         //   else
             {
                 Debug.Log("zemlya");
                 Destroy(fireball);
+                if (collision.gameObject.tag == "Mace")
+                {
+                    Destroy(collision.gameObject);
+                }
+             //   kdCol = 0.002f;
 
             }
+
         }
        
         
     }
 
-    void FireUpdateRight()
+    void FireUpdateRight()//don`t use
     {
         float fireTime = 30;
         while (fireTime > 0)
