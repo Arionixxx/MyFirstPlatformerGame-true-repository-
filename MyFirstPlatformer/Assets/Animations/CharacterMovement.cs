@@ -69,14 +69,7 @@ public class CharacterMovement : MonoBehaviour
             TimeBtwSFireballs -= Time.deltaTime;
         }
        
-        if (timeDestroyFireball > 0)
-        {
-            timeDestroyFireball -= Time.deltaTime;
-        }else
-        {
-            Destroy(fireball.gameObject);
-            timeDestroyFireball = startTimeDestroyFireball;
-        }
+        
      //   _fireballMove.x +=  10 * Time.deltaTime;
         _animations.IsMoving = _isMoving;
         _animations.IsFlying = IsFlying();
