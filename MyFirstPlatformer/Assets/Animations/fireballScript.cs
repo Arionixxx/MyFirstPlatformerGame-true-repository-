@@ -10,6 +10,8 @@ public class fireballScript : MonoBehaviour
     public LayerMask whatIsSolid;
     public GameObject fireball;
     private float fireTimee;
+    private Animator animator;
+    private float kd;
 
 
 
@@ -18,7 +20,9 @@ public class fireballScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fireTimee = 1;
+        fireTimee = 0.8f;
+        kd = 0.2f;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,8 +34,19 @@ public class fireballScript : MonoBehaviour
         }
         else
         {
-            Destroy(fireball);
-            fireTimee = 1;
+            animator.SetTrigger("fireDestroy");
+            if (kd > 0)
+            {
+                kd -= Time.deltaTime;
+            }
+            else
+            {
+                Destroy(fireball);//ne razrushaet
+                
+                Debug.Log("destroyed!");//voobshe nikak(((
+                fireTimee = 0.8f;
+                kd = 0.2f; 
+            }
         }
         //if (Input.GetKey(KeyCode.F))
         {
@@ -59,8 +74,18 @@ public class fireballScript : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player")
         {
-            Debug.Log("zemlya");
-            Destroy(fireball);
+           // float kdCol = 0.01f;
+            animator.SetTrigger("fireDestroy");
+           // if (kdCol >= 0)
+            {
+             //   kdCol -= Time.deltaTime;
+            }
+           // else
+            {
+                Debug.Log("zemlya");
+                Destroy(fireball);
+
+            }
         }
        
         

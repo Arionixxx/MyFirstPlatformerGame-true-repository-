@@ -776,8 +776,8 @@ MonoBehaviour:
   _characterSprite: {fileID: 208290555}
   _fireballSprite: {fileID: 8053135235655176606, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
   fireball: {fileID: 8053135235655176604, guid: eda30edfb755f874bbde5eacd281f1f9, type: 3}
-  startTimeBtwFireballs: 1
-  startTimeDestroyFireball: 1
+  startTimeBtwFireballs: 1.1
+  startTimeDestroyFireball: 1.1
 --- !u!114 &208290559
 MonoBehaviour:
   m_ObjectHideFlags: 0
