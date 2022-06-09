@@ -11,17 +11,39 @@ public class HealthBar : MonoBehaviour
     public bool damageInFire = false;
     public GameObject healthPotion;
     private Rigidbody2D _rigidbody;
+    private bool globalDamage;
+    public GameObject player;
+
+    // private Animator playerAnimator;
+    private Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         fill = 1f;
         _rigidbody = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
+        globalDamage = false;
+
+      //  damageTransform = 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (globalDamage == true)
+        {
+          //  playerAnimator.SetTrigger("globalDamageTrigger");
+            
+            Debug.Log("damage is global!");
+        }
+        if (globalDamage == false)
+        {
+         //   playerAnimator.SetTrigger("globalNOTDamageTrigger");
+            Debug.Log("damage is NOT global!");
+        }
+        
         
         if (damageInFire == true)
         {
@@ -35,6 +57,8 @@ public class HealthBar : MonoBehaviour
         if (collision.tag == "Fire")
         {
             damageInFire = true;
+            globalDamage = true;
+            playerAnimator.SetTrigger("globalDamageTrigger");
         }
         if (collision.tag == "healthPotion")
         {
@@ -43,12 +67,25 @@ public class HealthBar : MonoBehaviour
             fill = 1f;
         }
 
+        if (collision.tag == "Mace")
+        {
+            globalDamage = true;
+            playerAnimator.SetTrigger("globalDamageTrigger");
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Fire")
         {
             damageInFire = false;
+            globalDamage = false;
+            playerAnimator.SetTrigger("globalNOTDamageTrigger");
+        }
+        if (collision.tag == "Mace")
+        {
+            globalDamage = false;
+            playerAnimator.SetTrigger("globalNOTDamageTrigger");
         }
     }
 
