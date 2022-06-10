@@ -111,8 +111,11 @@ public class fireballScript : MonoBehaviour
                            // maceRigid.AddForce(transform.up * 0.25f, ForceMode2D.Impulse);//ne rabotaet
                            // Debug.Log("5 sec");
 
-                         Destroy(collision.gameObject);//delete coments
+                        Destroy(collision.gameObject);//delete coments
                         Instantiate(spawnMaceAfterDie, new Vector3(tempMacePos.x, tempMacePos.y, -1), Quaternion.identity);
+                        //yield return new WaitForSeconds(3);
+                        //Destroy(spawnMaceAfterDie);
+                        // maceRigid.AddForce(transform.up * 30, ForceMode2D.Impulse);
 
                         // maceDieDelay = 1;
 
