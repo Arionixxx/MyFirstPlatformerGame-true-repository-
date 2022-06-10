@@ -13,6 +13,12 @@ public class fireballScript : MonoBehaviour
     private Animator animator;
     public float kd;
     public float kdCol;
+    private float maceDieDelay;
+    public GameObject maceEnemy;
+    private Animator maceEnemyAnimator;
+    private Vector3 tempMacePos;
+    private Rigidbody2D maceRigid;
+    public GameObject spawnMaceAfterDie;
 
 
 
@@ -21,10 +27,15 @@ public class fireballScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maceRigid = maceEnemy.GetComponent<Rigidbody2D>();
+        maceDieDelay = 1;
         fireTimee = 0.8f;
         kd = 0.2f;
         kdCol = 0.2f;
         animator = GetComponent<Animator>();
+        maceEnemyAnimator = maceEnemy.GetComponent<Animator>();
+        // StartCoroutine(OnTriggerEnter2D());
+        maceEnemyAnimator.SetTrigger("maceDie");
     }
 
     // Update is called once per frame
@@ -73,6 +84,7 @@ public class fireballScript : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+   // IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag != "Player")
         {
@@ -86,9 +98,26 @@ public class fireballScript : MonoBehaviour
             {
                 Debug.Log("zemlya");
                 Destroy(fireball);
-                if (collision.gameObject.tag == "Mace")
+
+        if (collision.gameObject.tag == "Mace")
                 {
-                    Destroy(collision.gameObject);
+                   // maceEnemyAnimator.SetTrigger("maceDie");
+                   // Debug.Log("mace!!! blin mace!!!");
+                    
+                    
+                    {
+                        // yield return new WaitForSeconds(5);
+                        tempMacePos = collision.gameObject.transform.position;
+                           // maceRigid.AddForce(transform.up * 0.25f, ForceMode2D.Impulse);//ne rabotaet
+                           // Debug.Log("5 sec");
+
+                         Destroy(collision.gameObject);//delete coments
+                        Instantiate(spawnMaceAfterDie, new Vector3(tempMacePos.x, tempMacePos.y, -1), Quaternion.identity);
+
+                        // maceDieDelay = 1;
+
+
+                    }
                 }
              //   kdCol = 0.002f;
 

@@ -36,12 +36,12 @@ public class HealthBar : MonoBehaviour
         {
           //  playerAnimator.SetTrigger("globalDamageTrigger");
             
-            Debug.Log("damage is global!");
+           // Debug.Log("damage is global!");
         }
         if (globalDamage == false)
         {
          //   playerAnimator.SetTrigger("globalNOTDamageTrigger");
-            Debug.Log("damage is NOT global!");
+           // Debug.Log("damage is NOT global!");
         }
         
         
