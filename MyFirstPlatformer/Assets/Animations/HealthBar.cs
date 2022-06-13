@@ -14,12 +14,17 @@ public class HealthBar : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private bool globalDamage;
     public GameObject player;
+    public GameObject dieTextMessage;
+
 
     // private Animator playerAnimator;
     private Animator playerAnimator;
 
-    public void RestartLevel()
+    //public void RestartLevel()
+    IEnumerator RestartLevel()
     {
+       // Debug.Log("restart");
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -30,6 +35,7 @@ public class HealthBar : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         globalDamage = false;
+        
 
       //  damageTransform = 
     }
@@ -57,9 +63,12 @@ public class HealthBar : MonoBehaviour
         }
         bar.fillAmount = fill;
 
-        if (fill <= 0f)
+        if (fill <= 0)
         {
+            dieTextMessage.SetActive(true);
+            StartCoroutine(RestartLevel());
             RestartLevel();
+           // player.SetActive(false);
         }
     }
 
