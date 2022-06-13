@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class HealthBar : MonoBehaviour
 
     // private Animator playerAnimator;
     private Animator playerAnimator;
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +56,11 @@ public class HealthBar : MonoBehaviour
             fill -= Time.deltaTime * 0.05f;
         }
         bar.fillAmount = fill;
+
+        if (fill <= 0f)
+        {
+            RestartLevel();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
