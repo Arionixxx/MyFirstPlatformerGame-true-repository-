@@ -12,6 +12,7 @@ TagManager:
   - Mace
   - healthPotion
   - fireball
+  - Water
   layers:
   - Default
   - TransparentFX

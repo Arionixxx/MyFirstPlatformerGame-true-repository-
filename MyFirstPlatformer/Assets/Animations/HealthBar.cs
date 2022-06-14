@@ -93,6 +93,11 @@ public class HealthBar : MonoBehaviour
             playerAnimator.SetTrigger("globalDamageTrigger");
         }
 
+        if (collision.tag == "Water")
+        {
+            fill = 0;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
