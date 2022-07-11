@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private Vector3 _groundCheckOffset;
     private Vector3 _input;
+    private Vector3 _swimDirection;
     private bool _isMoving;
     private bool _isGrounded;
     private bool _isFlying;
@@ -26,6 +27,8 @@ public class CharacterMovement : MonoBehaviour
     private float timeDestroyFireball;
     public float startTimeDestroyFireball;
 
+    private bool isWater; 
+
 
     // Start is called before the first frame update
     private void Start()
@@ -33,6 +36,9 @@ public class CharacterMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<CharactersAnimations>();
         timeDestroyFireball = startTimeDestroyFireball;
+        _speed = 5;
+        _jumpForce = 14;
+        _swimDirection = Vector3.up;
         
     }
 
@@ -43,13 +49,18 @@ public class CharacterMovement : MonoBehaviour
         fireForMovementScript = _fireballSprite;
         Move();
         CheckGround();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isWater)
         {
             if (_isGrounded)
             {
                 Jump();
                 _animations.Jump();
             }
+        }
+
+        if (Input.GetKey(KeyCode.Space) && isWater)
+        {
+            Swim();
         }
 
         if (TimeBtwSFireballs <= 0)
@@ -87,6 +98,12 @@ public class CharacterMovement : MonoBehaviour
        // _animations.IsMoving = _isMoving;
     }
 
+    private void Swim()
+    {
+       
+        transform.position += _swimDirection * _jumpForce * Time.deltaTime;
+    }
+
     private void Atack()
     {
         Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
@@ -102,6 +119,8 @@ public class CharacterMovement : MonoBehaviour
       //  Debug.Log("Jump!");
         _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
     }
+
+    
 
     private void CheckGround()
     {
@@ -134,6 +153,28 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "swimWater")
+        {
+            _speed = 2.5f;
+            _rigidbody.gravityScale = 0.8f; 
+            isWater = true;
+            Debug.Log("it`s water");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "swimWater")
+        {
+            _speed = 5;
+            _rigidbody.gravityScale = 1.6f;
+            isWater = false;
+            Debug.Log("it`s NOT water");
         }
     }
 }
