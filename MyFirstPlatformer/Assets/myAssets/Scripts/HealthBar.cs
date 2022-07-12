@@ -16,19 +16,14 @@ public class HealthBar : MonoBehaviour
     public GameObject player;
     public GameObject dieTextMessage;
 
-
-    // private Animator playerAnimator;
     private Animator playerAnimator;
 
-    //public void RestartLevel()
     IEnumerator RestartLevel()
     {
-       // Debug.Log("restart");
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("SampleScene");
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         fill = 1f;
@@ -36,26 +31,10 @@ public class HealthBar : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         globalDamage = false;
         
-
-      //  damageTransform = 
     }
 
-    // Update is called once per frame
     void Update()
-    {
-
-        if (globalDamage == true)
-        {
-          //  playerAnimator.SetTrigger("globalDamageTrigger");
-            
-           // Debug.Log("damage is global!");
-        }
-        if (globalDamage == false)
-        {
-         //   playerAnimator.SetTrigger("globalNOTDamageTrigger");
-           // Debug.Log("damage is NOT global!");
-        }
-        
+    {   
         
         if (damageInFire == true)
         {
@@ -68,7 +47,7 @@ public class HealthBar : MonoBehaviour
             dieTextMessage.SetActive(true);
             StartCoroutine(RestartLevel());
             RestartLevel();
-           // player.SetActive(false);
+           
         }
     }
 
@@ -77,7 +56,7 @@ public class HealthBar : MonoBehaviour
         if (collision.tag == "Fire")
         {
             damageInFire = true;
-            globalDamage = true;
+          //  globalDamage = true;
             playerAnimator.SetTrigger("globalDamageTrigger");
         }
         if (collision.tag == "healthPotion")
@@ -89,7 +68,7 @@ public class HealthBar : MonoBehaviour
 
         if (collision.tag == "Mace")
         {
-            globalDamage = true;
+           // globalDamage = true;
             playerAnimator.SetTrigger("globalDamageTrigger");
         }
 
@@ -104,12 +83,12 @@ public class HealthBar : MonoBehaviour
         if (collision.tag == "Fire")
         {
             damageInFire = false;
-            globalDamage = false;
+          //  globalDamage = false;
             playerAnimator.SetTrigger("globalNOTDamageTrigger");
         }
         if (collision.tag == "Mace")
         {
-            globalDamage = false;
+           // globalDamage = false;
             playerAnimator.SetTrigger("globalNOTDamageTrigger");
         }
     }

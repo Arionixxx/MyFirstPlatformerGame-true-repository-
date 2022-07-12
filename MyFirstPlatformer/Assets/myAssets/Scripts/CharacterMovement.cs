@@ -43,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-  private void Update()
+  private void FixedUpdate()
     {
         
         fireForMovementScript = _fireballSprite;
@@ -62,7 +62,7 @@ public class CharacterMovement : MonoBehaviour
         {
             _rigidbody.gravityScale = 0;
             Swim();
-            //Debug.Log("spase is down");
+            
         }
 
         if (Input.GetKeyUp(KeyCode.Space) && isWater)
@@ -88,7 +88,6 @@ public class CharacterMovement : MonoBehaviour
         }
        
         
-     //   _fireballMove.x +=  10 * Time.deltaTime;
         _animations.IsMoving = _isMoving;
         _animations.IsFlying = IsFlying();
     }
@@ -97,12 +96,12 @@ public class CharacterMovement : MonoBehaviour
         _input = new Vector2(Input.GetAxis("Horizontal"), 0);
         transform.position += _input * _speed * Time.deltaTime;
         _isMoving = _input.x != 0 ? true : false;
-       // Debug.Log(_speed);
+     
         if (_isMoving)
         {
             _characterSprite.flipX = _input.x > 0 ? false : true;
         }
-       // _animations.IsMoving = _isMoving;
+       
     }
 
     private void Swim()
@@ -117,13 +116,11 @@ public class CharacterMovement : MonoBehaviour
 
         
         
-        // _fireballMove = new Vector2(fireball.transform.position.x, fireball.transform.position.y);
 
     }
 
     private void Jump()
     {
-      //  Debug.Log("Jump!");
         _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
     }
 
@@ -137,17 +134,14 @@ public class CharacterMovement : MonoBehaviour
 
         if (hit.collider != null)
         
-       // if (true) сюда даже не заходит
+       
         {
             _isGrounded = hit.collider.CompareTag("Ground");
-          //  Debug.Log("something under you!");
-         //   Debug.Log(hit.collider);
          
         }
         else
         {
-            _isGrounded = false; //or true??
-         //   Debug.Log("It's not ground under you! It's not underground!!!");
+            _isGrounded = false; 
         }
             
     }

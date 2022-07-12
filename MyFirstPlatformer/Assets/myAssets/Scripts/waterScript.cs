@@ -5,16 +5,6 @@ using UnityEngine;
 public class waterScript : MonoBehaviour
 {
     
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

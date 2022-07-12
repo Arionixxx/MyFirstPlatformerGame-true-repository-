@@ -34,11 +34,9 @@ public class fireballScript : MonoBehaviour
         kdCol = 0.2f;
         animator = GetComponent<Animator>();
         maceEnemyAnimator = maceEnemy.GetComponent<Animator>();
-        // StartCoroutine(OnTriggerEnter2D());
         maceEnemyAnimator.SetTrigger("maceDie");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (fireTimee > 0)
@@ -61,68 +59,42 @@ public class fireballScript : MonoBehaviour
                 kd = 0.2f;
             }
         }
-        //if (Input.GetKey(KeyCode.F))
+
         {
 
-           // transform.Translate(CharacterMovement.fireForMovementScript.transform.right * speed * Time.deltaTime); // должно работать но с РАЙТ проблемки
-            if (CharacterMovement.fireForMovementScript.flipX)
-           // if (false)
+               if (CharacterMovement.fireForMovementScript.flipX)
             {
 
                 Debug.Log("Fireball!!");
                 transform.Translate(-Vector2.right * speed *  Time.deltaTime);
 
-               // FireUpdateRight();
-
             }
             else
             {
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
-                //FireUpdateLeft();
+                
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-   // IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag != "Player")
         {
             
             animator.SetTrigger("fireDestroy");
-         //   if (kdCol > 0)
-            {
-          //      kdCol -= 100 * Time.deltaTime;//ne pashet((
-            }
-         //   else
             {
                 Debug.Log("zemlya");
                 Destroy(fireball);
 
         if (collision.gameObject.tag == "Mace")
                 {
-                   // maceEnemyAnimator.SetTrigger("maceDie");
-                   // Debug.Log("mace!!! blin mace!!!");
-                    
-                    
-                    {
-                        // yield return new WaitForSeconds(5);
+
                         tempMacePos = collision.gameObject.transform.position;
-                           // maceRigid.AddForce(transform.up * 0.25f, ForceMode2D.Impulse);//ne rabotaet
-                           // Debug.Log("5 sec");
-
-                        Destroy(collision.gameObject);//delete coments
+                        Destroy(collision.gameObject);
                         Instantiate(spawnMaceAfterDie, new Vector3(tempMacePos.x, tempMacePos.y, -1), Quaternion.identity);
-                        //yield return new WaitForSeconds(3);
-                        //Destroy(spawnMaceAfterDie);
-                        // maceRigid.AddForce(transform.up * 30, ForceMode2D.Impulse);
-
-                        // maceDieDelay = 1;
-
-
-                    }
+                    
                 }
-             //   kdCol = 0.002f;
 
             }
 
