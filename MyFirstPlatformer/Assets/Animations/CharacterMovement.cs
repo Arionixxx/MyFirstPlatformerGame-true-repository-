@@ -60,7 +60,14 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && isWater)
         {
+            _rigidbody.gravityScale = 0;
             Swim();
+            //Debug.Log("spase is down");
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && isWater)
+        {
+            _rigidbody.gravityScale = 0.8f;
         }
 
         if (TimeBtwSFireballs <= 0)
@@ -100,8 +107,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void Swim()
     {
-       
-        transform.position += _swimDirection * _jumpForce * Time.deltaTime;
+        
+         transform.position += _swimDirection * _jumpForce * Time.deltaTime;
     }
 
     private void Atack()
@@ -161,7 +168,8 @@ public class CharacterMovement : MonoBehaviour
         if (collision.tag == "swimWater")
         {
             _speed = 2.5f;
-            _rigidbody.gravityScale = 0.8f; 
+            _rigidbody.gravityScale = 0.8f;
+            _jumpForce = 5;
             isWater = true;
             Debug.Log("it`s water");
         }
@@ -173,8 +181,11 @@ public class CharacterMovement : MonoBehaviour
         {
             _speed = 5;
             _rigidbody.gravityScale = 1.6f;
+            _jumpForce = 14;
             isWater = false;
             Debug.Log("it`s NOT water");
         }
     }
+
+    
 }
