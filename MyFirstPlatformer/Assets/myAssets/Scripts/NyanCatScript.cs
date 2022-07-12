@@ -18,18 +18,15 @@ public class NyanCatScript : MonoBehaviour
             nyanCat.SetActive(true);
             QuestionSymbol.SetActive(false);
             silhouetteCat.SetActive(false);
-            Debug.Log("aboba");
-
+            
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

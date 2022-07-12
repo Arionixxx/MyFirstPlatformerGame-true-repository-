@@ -17,13 +17,11 @@ public class CoinPicker : MonoBehaviour
     private float coins = 0;
     void Start()
     {
-        // text = GetComponent<TextMesh>();
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // text.text = Coin.ToString();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
