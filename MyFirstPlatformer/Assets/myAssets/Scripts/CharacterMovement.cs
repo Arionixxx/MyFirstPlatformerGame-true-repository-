@@ -49,7 +49,7 @@ public class CharacterMovement : MonoBehaviour
         fireForMovementScript = _fireballSprite;
         Move();
         CheckGround();
-        if (Input.GetKeyDown(KeyCode.Space) && !isWater)
+        if (Input.GetKey(KeyCode.Space) && !isWater)
         {
             if (_isGrounded)
             {
