@@ -21,7 +21,9 @@ public class HealthBar : MonoBehaviour
     IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
+        Debug.Log("you die!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
     }
 
     void Start()
