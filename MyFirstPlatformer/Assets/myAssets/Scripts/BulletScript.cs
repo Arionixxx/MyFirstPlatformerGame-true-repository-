@@ -13,6 +13,13 @@ public class BulletScript : MonoBehaviour
     {
         bulletRigidbody = GetComponent<Rigidbody2D>();
         bulletRigidbody.velocity = transform.right * bulletSpeed;
+        StartCoroutine(bulletDestroyCoroutine());
+    }
+
+    IEnumerator bulletDestroyCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
     }
 
     // Update is called once per frame
