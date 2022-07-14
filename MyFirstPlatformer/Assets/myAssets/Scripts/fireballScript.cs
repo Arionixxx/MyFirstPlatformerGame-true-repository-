@@ -27,6 +27,7 @@ public class fireballScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         maceRigid = maceEnemy.GetComponent<Rigidbody2D>();
         maceDieDelay = 1;
         fireTimee = 0.8f;

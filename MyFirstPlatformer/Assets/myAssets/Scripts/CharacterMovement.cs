@@ -27,7 +27,9 @@ public class CharacterMovement : MonoBehaviour
     private float timeDestroyFireball;
     public float startTimeDestroyFireball;
 
-    private bool isWater; 
+    private bool isWater;
+    private bool isMoveRight;
+    private bool isRotated;
 
 
     // Start is called before the first frame update
@@ -99,7 +101,20 @@ public class CharacterMovement : MonoBehaviour
      
         if (_isMoving)
         {
-            _characterSprite.flipX = _input.x > 0 ? false : true;
+            isMoveRight = _input.x > 0? false: true;
+
+            // _characterSprite.flipX = _input.x > 0 ? false : true;
+            if (isMoveRight && !isRotated)
+            {
+                isRotated = true;
+                _characterSprite.transform.Rotate(0, 180, 0);
+            }
+
+            if (!isMoveRight && isRotated)
+            {
+                isRotated = false;
+                _characterSprite.transform.Rotate(0, 180, 0);
+            }
         }
        
     }
@@ -112,10 +127,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void Atack()
     {
-        Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
+        //Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
+        Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
 
-        
-        
+
 
     }
 
