@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8038341630036902312}
   - component: {fileID: 8038341630036902315}
   m_Layer: 0
-  m_Name: MaceDie
+  m_Name: extraMace
   m_TagString: Mace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
