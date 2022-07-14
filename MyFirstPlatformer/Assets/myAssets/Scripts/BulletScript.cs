@@ -27,4 +27,12 @@ public class BulletScript : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Mace")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

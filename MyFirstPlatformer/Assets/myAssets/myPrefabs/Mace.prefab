@@ -145,3 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878c5ec5c7b887f4794b70716a457e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mace: {fileID: 4330377751438076772}
+  maceAnimator: {fileID: 0}
+  direction: {x: 0, y: 0}
+  tempMacePos: {x: 0, y: 0, z: 0}
+  spawnMaceAfterDie: {fileID: 349904636036107808, guid: b6e19556c68bd9b4ea63711121f84f5f, type: 3}
