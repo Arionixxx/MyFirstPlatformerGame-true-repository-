@@ -29,7 +29,7 @@ public class maceScript : MonoBehaviour
         {
             maceAnimator.SetTrigger("maceDie");
             tempMacePos = collision.gameObject.transform.position;
-           // Destroy(collision.gameObject);
+           
             Destroy(this.gameObject);
             Instantiate(spawnMaceAfterDie, new Vector3(tempMacePos.x, tempMacePos.y, -1), Quaternion.identity);
         }
