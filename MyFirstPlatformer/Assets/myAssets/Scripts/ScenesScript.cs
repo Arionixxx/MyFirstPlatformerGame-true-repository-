@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScenesScript : MonoBehaviour
 {
    // private bool isGameStarted;
-    private int currentLevel = 1;
+    private int currentLevel = 2;
   
     void Start()
     {
