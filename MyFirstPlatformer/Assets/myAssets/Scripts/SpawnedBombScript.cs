@@ -16,7 +16,6 @@ public class SpawnedBombScript : MonoBehaviour
         {
 
             GetComponent<SpriteRenderer>().color = Color.red;
-            StartCoroutine(coroutineForFireDestroy());
             StartCoroutine(coroutineForBombDestroy());
             Instantiate(spawnedFire, new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         }
@@ -28,9 +27,5 @@ public class SpawnedBombScript : MonoBehaviour
         Destroy(gameObject);
         
     }
-    IEnumerator coroutineForFireDestroy()
-    {
-        yield return new WaitForSeconds(0.15f);
-        Destroy(spawnedFire); //почему не работает??
-    }
+    
 }
