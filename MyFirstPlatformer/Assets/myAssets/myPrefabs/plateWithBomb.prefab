@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7209756215854133567}
   - component: {fileID: 7209756215854133565}
   - component: {fileID: 7209756215854133506}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: plateWithBomb
   m_TagString: trapPlate
   m_Icon: {fileID: 0}

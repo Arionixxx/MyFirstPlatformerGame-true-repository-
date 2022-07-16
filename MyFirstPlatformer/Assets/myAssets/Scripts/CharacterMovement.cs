@@ -155,7 +155,7 @@ public class CharacterMovement : MonoBehaviour
         else
         {
              _isGrounded = false; 
-            //_isGrounded = hit.collider.CompareTag("trapPlate");
+            
         }
             
     }
