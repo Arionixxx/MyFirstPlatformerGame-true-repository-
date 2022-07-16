@@ -9,7 +9,7 @@ public class trapPlateScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Ground" && collision.tag != "Bomb")
+        if (collision.tag != "Ground" && collision.tag != "Bomb" && collision.tag != "Untagged")
         {
             transform.position = new Vector3 (transform.position.x, transform.position.y - 0.1f, transform.position.z);
            // if (!isBombSpawned)
@@ -23,7 +23,7 @@ public class trapPlateScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag != "Ground" && collision.tag!= "Bomb")
+        if (collision.tag != "Ground" && collision.tag!= "Bomb" && collision.tag != "Untagged")
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
           //  isBombSpawned = false;
