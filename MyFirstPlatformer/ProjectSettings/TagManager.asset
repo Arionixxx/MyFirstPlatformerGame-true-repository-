@@ -17,6 +17,7 @@ TagManager:
   - swimWater
   - Bullet
   - trapPlate
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - trapPlate
   - 
   - 
   - 

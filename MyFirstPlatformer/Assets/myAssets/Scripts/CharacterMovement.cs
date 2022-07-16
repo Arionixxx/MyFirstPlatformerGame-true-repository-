@@ -148,15 +148,14 @@ public class CharacterMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(rayStartPosition, transform.TransformDirection(Vector3.down), rayLength, groundMask);
 
         if (hit.collider != null)
-        
-       
         {
             _isGrounded = hit.collider.CompareTag("Ground");
          
         }
         else
         {
-            _isGrounded = false; 
+             _isGrounded = false; 
+            //_isGrounded = hit.collider.CompareTag("trapPlate");
         }
             
     }

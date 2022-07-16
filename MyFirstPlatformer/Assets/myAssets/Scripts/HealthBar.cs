@@ -79,6 +79,11 @@ public class HealthBar : MonoBehaviour
             fill = 0;
         }
 
+        if (collision.tag == "Bomb")
+        {
+            fill -= 0.3f;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
