@@ -16,6 +16,7 @@ TagManager:
   - Reverse
   - swimWater
   - Bullet
+  - trapPlate
   layers:
   - Default
   - TransparentFX
