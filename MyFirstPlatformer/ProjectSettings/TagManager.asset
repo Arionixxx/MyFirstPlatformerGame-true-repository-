@@ -18,6 +18,7 @@ TagManager:
   - Bullet
   - trapPlate
   - Bomb
+  - Arrow
   layers:
   - Default
   - TransparentFX

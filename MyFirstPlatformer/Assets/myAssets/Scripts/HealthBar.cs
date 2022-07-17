@@ -84,6 +84,11 @@ public class HealthBar : MonoBehaviour
             fill -= 0.3f;
         }
 
+        if (collision.tag == "Arrow")
+        {
+            fill -= 0.2f;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
