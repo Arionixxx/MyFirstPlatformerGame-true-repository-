@@ -54,15 +54,18 @@ public class MoneyBoxScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Player" || collision.tag == "Bullet")
         {
-            Debug.Log("SUNDUK");
-
-            if (isCaseOpen == false)
             {
-                animator.SetTrigger("boxTrigger");
-                StartCoroutine(SpawmCD());
-                isCaseOpen = true;
-                
+                Debug.Log("SUNDUK");
+
+                if (isCaseOpen == false)
+                {
+                    animator.SetTrigger("boxTrigger");
+                    StartCoroutine(SpawmCD());
+                    isCaseOpen = true;
+
+                }
             }
         }
     }
