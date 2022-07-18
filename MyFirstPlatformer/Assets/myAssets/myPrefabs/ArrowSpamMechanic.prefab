@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPosition: {fileID: 6238093171571289908}
-  arrow: {fileID: 4038188370429703976, guid: 9da0caab3a0878a4196f4702e4cc7505, type: 3}
+  arrow: {fileID: 6082798283640966702, guid: 8684152496fb3ac4383f4ddba232c8b6, type: 3}
 --- !u!1 &6238093171571289909
 GameObject:
   m_ObjectHideFlags: 0
