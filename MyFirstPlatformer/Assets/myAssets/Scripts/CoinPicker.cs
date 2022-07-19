@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CoinPicker : MonoBehaviour
 {
@@ -53,5 +54,11 @@ public class CoinPicker : MonoBehaviour
                 star3.SetActive(true);
             }
         }
+    }
+
+    IEnumerator lvlEndCoroutine()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(0);//start menu
     }
 }
