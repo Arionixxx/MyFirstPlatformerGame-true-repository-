@@ -7,12 +7,12 @@ public class arrowSingleScript : MonoBehaviour
 
     public float arrowSpeed;
     private Rigidbody2D arrowRigidBody;
-    // Start is called before the first frame update
+   
     void Start()
     {
         arrowRigidBody = GetComponent<Rigidbody2D>();
         arrowRigidBody.velocity = transform.up * arrowSpeed;
-      //  arrowRigidBody.velocity 
+      
         StartCoroutine(arrowDestroyCoroutine());
     }
 
