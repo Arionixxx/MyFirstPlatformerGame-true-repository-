@@ -18,14 +18,14 @@ public class arrowSingleScript : MonoBehaviour
 
     IEnumerator arrowDestroyCoroutine()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         Destroy(gameObject);
         Debug.Log("Arrow destroied");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" || collision.tag == "ArrowDestr")
         {
             Destroy(gameObject);
         }

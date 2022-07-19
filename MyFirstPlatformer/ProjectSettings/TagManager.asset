@@ -19,6 +19,7 @@ TagManager:
   - trapPlate
   - Bomb
   - Arrow
+  - ArrowDestr
   layers:
   - Default
   - TransparentFX
