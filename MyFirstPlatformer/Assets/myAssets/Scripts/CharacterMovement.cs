@@ -31,6 +31,10 @@ public class CharacterMovement : MonoBehaviour
     private bool isMoveRight;
     private bool isRotated;
 
+    public Transform checkGroundLeft;
+    public Transform checkGroundRight;
+    public Transform checkGroundMiddle;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -39,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
         _animations = GetComponentInChildren<CharactersAnimations>();
         timeDestroyFireball = startTimeDestroyFireball;
         _speed = 5;
-        _jumpForce = 14;
+        _jumpForce = 5.5f;
         _swimDirection = Vector3.up;
         
     }
@@ -144,12 +148,16 @@ public class CharacterMovement : MonoBehaviour
     private void CheckGround()
     {
         float rayLength = 0.3f;
-        Vector3 rayStartPosition = transform.position + _groundCheckOffset;
-        RaycastHit2D hit = Physics2D.Raycast(rayStartPosition, transform.TransformDirection(Vector3.down), rayLength, groundMask);
+        Vector3 rayStartPositionLeft = checkGroundLeft.transform.position + _groundCheckOffset;
+        RaycastHit2D hitLeft = Physics2D.Raycast(rayStartPositionLeft, transform.TransformDirection(Vector3.down), rayLength, groundMask);
+        Vector3 rayStartPositionRight = checkGroundRight.transform.position + _groundCheckOffset;
+        RaycastHit2D hitRight = Physics2D.Raycast(rayStartPositionRight, transform.TransformDirection(Vector3.down), rayLength, groundMask);
+        Vector3 rayStartPositionMiddle = checkGroundMiddle.transform.position + _groundCheckOffset;
+        RaycastHit2D hitMiddle = Physics2D.Raycast(rayStartPositionMiddle, transform.TransformDirection(Vector3.down), rayLength, groundMask);
 
-        if (hit.collider != null)
+        if (hitLeft.collider != null  || hitRight.collider != null)
         {
-            _isGrounded = hit.collider.CompareTag("Ground");
+            _isGrounded =  hitLeft.collider.CompareTag("Ground") || hitRight.collider.CompareTag("Ground");
          
         }
         else
@@ -189,7 +197,7 @@ public class CharacterMovement : MonoBehaviour
         {
             _speed = 5;
             _rigidbody.gravityScale = 1.6f;
-            _jumpForce = 14;
+            _jumpForce = 5.5f;
             isWater = false;
             Debug.Log("it`s NOT water");
         }
