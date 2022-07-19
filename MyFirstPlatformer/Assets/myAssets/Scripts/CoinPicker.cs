@@ -53,7 +53,9 @@ public class CoinPicker : MonoBehaviour
                 star2.SetActive(true);
                 star3.SetActive(true);
             }
+            StartCoroutine(lvlEndCoroutine());
         }
+ 
     }
 
     IEnumerator lvlEndCoroutine()
