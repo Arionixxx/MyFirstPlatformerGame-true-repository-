@@ -26,10 +26,15 @@ public class CharacterMovement : MonoBehaviour
     public float startTimeBtwFireballs;
     private float timeDestroyFireball;
     public float startTimeDestroyFireball;
+    private float extraJump;
+    public float extraJumpValue;
+    public float speedValue;
+    public float jumpForceValue;
 
     private bool isWater;
     private bool isMoveRight;
     private bool isRotated;
+    
 
     public Transform checkGroundLeft;
     public Transform checkGroundRight;
@@ -39,30 +44,57 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        extraJumpValue = 1;//change!!!
+        extraJump = extraJumpValue;
+        speedValue = 5;//change it
+        jumpForceValue = 12;//and it
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<CharactersAnimations>();
         timeDestroyFireball = startTimeDestroyFireball;
-        _speed = 5;
-        _jumpForce = 5.5f;
+        _speed = speedValue;
+        _jumpForce = jumpForceValue;
         _swimDirection = Vector3.up;
         
     }
 
-    // Update is called once per frame
-  private void FixedUpdate()
+    private void Update()
+    {
+
+        if (_isGrounded)
+        {
+            extraJump = extraJumpValue;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isWater)
+        {
+            if (extraJump > 0)
+            {
+                Jump();
+                _animations.Jump();
+                extraJump--;
+            }
+        }
+    }
+    private void FixedUpdate()
     {
         
       //  fireForMovementScript = _fireballSprite;
         Move();
         CheckGround();
-        if (Input.GetKey(KeyCode.Space) && !isWater)
+    /*    if (Input.GetKeyDown(KeyCode.Space) && !isWater)
         {
             if (_isGrounded)
             {
                 Jump();
+                isSecondJump = true;
                 _animations.Jump();
+                if (Input.GetKeyDown(KeyCode.Space) && isSecondJump)
+                {
+                    Jump();
+                   // isSecondJump = false;
+                }
             }
-        }
+        } */
 
         if (Input.GetKey(KeyCode.Space) && isWater)
         {
@@ -141,7 +173,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void Jump()
     {
-        _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
+        // _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
+        _rigidbody.velocity = Vector2.up * _jumpForce;
     }
 
     
@@ -201,9 +234,9 @@ public class CharacterMovement : MonoBehaviour
     {
         if (collision.tag == "swimWater")
         {
-            _speed = 5;
+            _speed = speedValue;
             _rigidbody.gravityScale = 1.6f;
-            _jumpForce = 5.5f;
+            _jumpForce = jumpForceValue;
             isWater = false;
             Debug.Log("it`s NOT water");
         }
