@@ -52,7 +52,7 @@ public class CharacterMovement : MonoBehaviour
   private void FixedUpdate()
     {
         
-        fireForMovementScript = _fireballSprite;
+      //  fireForMovementScript = _fireballSprite;
         Move();
         CheckGround();
         if (Input.GetKey(KeyCode.Space) && !isWater)
@@ -76,7 +76,7 @@ public class CharacterMovement : MonoBehaviour
             _rigidbody.gravityScale = 0.8f;
         }
 
-        if (TimeBtwSFireballs <= 0)
+        /*if (TimeBtwSFireballs <= 0)
         {
             if (Input.GetKey(KeyCode.F))
             {
@@ -91,11 +91,12 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             TimeBtwSFireballs -= Time.deltaTime;
-        }
+        }*/
        
         
         _animations.IsMoving = _isMoving;
         _animations.IsFlying = IsFlying();
+        Debug.Log(_rigidbody.velocity.y);
     }
     private void Move()
     {
@@ -155,10 +156,11 @@ public class CharacterMovement : MonoBehaviour
         Vector3 rayStartPositionMiddle = checkGroundMiddle.transform.position + _groundCheckOffset;
         RaycastHit2D hitMiddle = Physics2D.Raycast(rayStartPositionMiddle, transform.TransformDirection(Vector3.down), rayLength, groundMask);
 
-        if (hitLeft.collider != null  || hitRight.collider != null)
+        if (hitLeft.collider != null  || hitRight.collider != null || hitMiddle.collider != null)
         {
-            _isGrounded =  hitLeft.collider.CompareTag("Ground") || hitRight.collider.CompareTag("Ground");
-         
+           // _isGrounded =  hitLeft.collider.CompareTag("Ground") || hitRight.collider.CompareTag("Ground") || hitMiddle.collider.CompareTag("Ground");
+         _isGrounded = true;
+
         }
         else
         {
@@ -169,12 +171,16 @@ public class CharacterMovement : MonoBehaviour
     }
     private bool IsFlying()
     {
-        if (_rigidbody.velocity.y < 0)
+        float rayLength = 0.001f;
+        RaycastHit2D hitDown = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.down), rayLength, groundMask);
+        if (_rigidbody.velocity.y < 0 && hitDown.collider == null)
         {
+           // Debug.Log("flying!");
             return true;
         }
         else
         {
+           // Debug.Log("isnt flying");
             return false;
         }
     }
