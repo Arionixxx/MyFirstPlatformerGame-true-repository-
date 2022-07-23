@@ -14,7 +14,9 @@ public class CoinPicker : MonoBehaviour
     public GameObject lvlCompleteText;
 
     public TMP_Text coinsText;
-    public AudioClip clip;
+    public AudioClip clipCoins;
+    public AudioClip clipFinish;
+
     
     private float coins = 0;
     void Start()
@@ -25,9 +27,9 @@ public class CoinPicker : MonoBehaviour
     void Update()
     {
     }
-    public void PlayAudioCoins(AudioClip clip)
+    public void PlayAudioClip(AudioClip clipAudio)
     {
-        GetComponent<AudioSource>().PlayOneShot(clip);
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,7 +38,7 @@ public class CoinPicker : MonoBehaviour
             coins++;
             coinsText.text = coins.ToString();
             Destroy(collision.gameObject);
-            PlayAudioCoins(clip);
+            PlayAudioClip(clipCoins);
 
         }
 
@@ -59,6 +61,7 @@ public class CoinPicker : MonoBehaviour
                 star2.SetActive(true);
                 star3.SetActive(true);
             }
+            PlayAudioClip(clipFinish);
             StartCoroutine(lvlEndCoroutine());
         }
  

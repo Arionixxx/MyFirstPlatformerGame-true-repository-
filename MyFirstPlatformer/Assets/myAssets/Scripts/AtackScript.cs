@@ -7,6 +7,7 @@ public class AtackScript : MonoBehaviour
 
     public Transform shotPosition;
     public GameObject bullet;
+    public AudioClip fireInstantiateClip;
 
     // Start is called before the first frame update
     void Start()
@@ -14,12 +15,16 @@ public class AtackScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
             Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+            PlayAudioClip(fireInstantiateClip);
         }
     }
 }

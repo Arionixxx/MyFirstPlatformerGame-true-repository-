@@ -5,14 +5,18 @@ using UnityEngine;
 public class PortalScript : MonoBehaviour
 {
     public GameObject instantiateTempPortal;
-    // Start is called before the first frame update
+    public AudioClip portalClip;
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             collision.gameObject.transform.position = new Vector3(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y + 20, collision.gameObject.transform.position.z);
             Instantiate(instantiateTempPortal, new Vector3(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y, collision.gameObject.transform.position.z), Quaternion.identity);
-           // StartCoroutine(delTempPortalCotoutine());
+            PlayAudioClip(portalClip);
         
         }
     }
@@ -21,6 +25,7 @@ public class PortalScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Destroy(instantiateTempPortal);
+        PlayAudioClip (portalClip);
 
     }
 }
