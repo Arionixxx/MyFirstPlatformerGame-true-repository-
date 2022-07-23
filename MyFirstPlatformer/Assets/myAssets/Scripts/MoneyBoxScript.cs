@@ -16,12 +16,18 @@ public class MoneyBoxScript : MonoBehaviour
     public float TimeSpawn;
     public bool isCaseOpen = false;
     public int CaseMoneyCount = 4; //to do: random
+    public AudioClip chestClip;
    
 
 
     void Repeat()
     {
         StartCoroutine(SpawmCD());
+    }
+
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
     }
     IEnumerator SpawmCD()
     {
@@ -62,6 +68,7 @@ public class MoneyBoxScript : MonoBehaviour
                 if (isCaseOpen == false)
                 {
                     animator.SetTrigger("boxTrigger");
+                    PlayAudioClip(chestClip);
                     StartCoroutine(SpawmCD());
                     isCaseOpen = true;
 

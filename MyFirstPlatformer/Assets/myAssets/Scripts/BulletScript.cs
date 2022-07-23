@@ -7,8 +7,12 @@ public class BulletScript : MonoBehaviour
 
     public float bulletSpeed;
     private Rigidbody2D bulletRigidbody;
+    public AudioClip bulletDestroyClip;
 
-    // Start is called before the first frame update
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
+    }
     void Start()
     {
         bulletRigidbody = GetComponent<Rigidbody2D>();
@@ -19,7 +23,9 @@ public class BulletScript : MonoBehaviour
     IEnumerator bulletDestroyCoroutine()
     {
         yield return new WaitForSeconds(5);
+      //  PlayAudioClip(bulletDestroyClip);
         Destroy(this.gameObject);
+        
     }
 
     // Update is called once per frame
@@ -32,7 +38,9 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.tag == "Mace" || collision.tag == "Ground")
         {
+          //  PlayAudioClip(bulletDestroyClip);
             Destroy(this.gameObject);
+            
         }
     }
 }
