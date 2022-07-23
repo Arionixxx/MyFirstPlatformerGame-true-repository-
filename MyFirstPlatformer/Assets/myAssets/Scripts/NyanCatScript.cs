@@ -6,6 +6,7 @@ public class NyanCatScript : MonoBehaviour
 {
     public GameObject nyanCat;
     public GameObject QuestionSymbol;
+    public AudioClip catMyau;
   
     
 
@@ -17,9 +18,14 @@ public class NyanCatScript : MonoBehaviour
            
             nyanCat.SetActive(true);
             QuestionSymbol.SetActive(false);
+            PlayAudioClip(catMyau);
             
             
         }
+    }
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
     }
 
     void Start()
