@@ -106,6 +106,7 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isWater)
         {
             _rigidbody.gravityScale = 0;
+
             Swim();
             
         }
@@ -167,6 +168,11 @@ public class CharacterMovement : MonoBehaviour
     {
         
          transform.position += _swimDirection * _jumpForce * Time.deltaTime;
+        if (_rigidbody.velocity.y < 0)
+        {
+            _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
+        }
+         
     }
 
     private void Atack()
