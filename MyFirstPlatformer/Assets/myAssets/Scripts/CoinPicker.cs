@@ -16,8 +16,10 @@ public class CoinPicker : MonoBehaviour
     public TMP_Text coinsText;
     public AudioClip clipCoins;
     public AudioClip clipFinish;
+    private bool isLvLEnded;
 
-    
+
+
     private float coins = 0;
     void Start()
     {
@@ -61,7 +63,11 @@ public class CoinPicker : MonoBehaviour
                 star2.SetActive(true);
                 star3.SetActive(true);
             }
-            PlayAudioClip(clipFinish);
+            if (!isLvLEnded)
+            {
+                PlayAudioClip(clipFinish);
+                isLvLEnded = true;
+            }
             StartCoroutine(lvlEndCoroutine());
         }
  
