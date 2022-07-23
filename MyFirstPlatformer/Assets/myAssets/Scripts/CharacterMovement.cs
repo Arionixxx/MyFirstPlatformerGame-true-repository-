@@ -40,6 +40,13 @@ public class CharacterMovement : MonoBehaviour
     public Transform checkGroundRight;
     public Transform checkGroundMiddle;
 
+    public AudioClip waterClip;
+
+
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -222,6 +229,10 @@ public class CharacterMovement : MonoBehaviour
     {
         if (collision.tag == "swimWater")
         {
+            if (_rigidbody.velocity.y < -8)
+            {
+                PlayAudioClip(waterClip);
+            }
             _speed = 2.5f;
             _rigidbody.gravityScale = 0.8f;
             _jumpForce = 5;
