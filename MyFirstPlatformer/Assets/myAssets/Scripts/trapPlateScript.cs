@@ -5,17 +5,23 @@ using UnityEngine;
 public class trapPlateScript : MonoBehaviour
 {
     public GameObject bomb;
-  //  private bool isBombSpawned;
+    public AudioClip panelClip;
+    //  private bool isBombSpawned;
+
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Ground" && collision.tag != "Bomb" && collision.tag != "Untagged")
+        if (collision.tag != "Ground" && collision.tag != "Bomb" && collision.tag != "Untagged" && collision.tag == "Player")
         {
             transform.position = new Vector3 (transform.position.x, transform.position.y - 0.1f, transform.position.z);
-           // if (!isBombSpawned)
+           
             {
                 Instantiate(bomb, new Vector3(transform.position.x, transform.position.y + 10, transform.position.z), Quaternion.identity);
-               // isBombSpawned = true;
+                PlayAudioClip(panelClip);
             }
             
         }
@@ -23,7 +29,7 @@ public class trapPlateScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag != "Ground" && collision.tag!= "Bomb" && collision.tag != "Untagged")
+        if (collision.tag != "Ground" && collision.tag!= "Bomb" && collision.tag != "Untagged" && collision.tag == "Player")
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
           //  isBombSpawned = false;

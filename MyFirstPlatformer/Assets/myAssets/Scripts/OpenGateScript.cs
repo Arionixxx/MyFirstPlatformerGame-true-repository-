@@ -8,7 +8,13 @@ public class OpenGateScript : MonoBehaviour
     public GameObject gate;
     private bool openOrNot;
     private bool isGateOpened;
+    public AudioClip plateClip;
 
+
+    public void PlayAudioClip(AudioClip clipAudio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clipAudio);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +22,7 @@ public class OpenGateScript : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
             openOrNot = true;
+            PlayAudioClip(plateClip);
             StartCoroutine(stopGateCoroutine());
 
         }
