@@ -7,6 +7,7 @@ public class ScenesScript : MonoBehaviour
 {
    // private bool isGameStarted;
     private int currentLevel = 2;
+    public GameObject sureWannaExit;
   
     void Start()
     {
@@ -30,7 +31,20 @@ public class ScenesScript : MonoBehaviour
 
     public void Exit()
     {
+       
+       sureWannaExit.SetActive(true);
 
+    }
+
+    public void yesExit()
+    {
+        Application.Quit();
+        Debug.Log("Exit");
+    }
+
+    public void noExit()
+    {
+        sureWannaExit.SetActive(false);
     }
    
 }
