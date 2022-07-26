@@ -166,12 +166,12 @@ public class CharacterMovement : MonoBehaviour
         if (isRightButtonDown)
         {
             _input = new Vector2(1, 0);
-            Debug.Log("R");
+          //  Debug.Log("R");
         }
         if (isLeftButtonDown)
         {
             _input = new Vector2(-1, 0);
-            Debug.Log("L");
+          //  Debug.Log("L");
         }
         if (!isLeftButtonDown && !isRightButtonDown)
         {
