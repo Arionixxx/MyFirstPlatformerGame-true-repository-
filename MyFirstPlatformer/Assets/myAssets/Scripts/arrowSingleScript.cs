@@ -20,7 +20,7 @@ public class arrowSingleScript : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
-        Debug.Log("Arrow destroied");
+       // Debug.Log("Arrow destroied");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

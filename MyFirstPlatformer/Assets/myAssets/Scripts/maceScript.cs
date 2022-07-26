@@ -36,7 +36,7 @@ public class maceScript : MonoBehaviour
 
         if (collision.gameObject.tag == "Reverse")
         {
-            Debug.Log("reverse!");
+          //  Debug.Log("reverse!");
             direction = -direction;
         }
 

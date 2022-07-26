@@ -42,6 +42,28 @@ public class CharacterMovement : MonoBehaviour
 
     public AudioClip waterClip;
 
+    public bool isRightButtonDown;
+    public bool isLeftButtonDown;
+
+    
+
+    public void OnLeftButtonDown()
+    {
+        isLeftButtonDown = true;
+        Debug.Log("left arrow");
+    }
+    
+    public void OnRightButtonDown()
+    {
+        isRightButtonDown = true;
+        Debug.Log("right arrow");
+    }
+
+    public void OnButtonUp()
+    {
+        isRightButtonDown = false;
+        isLeftButtonDown = false;
+    }
 
     public void PlayAudioClip(AudioClip clipAudio)
     {
@@ -136,11 +158,26 @@ public class CharacterMovement : MonoBehaviour
         
         _animations.IsMoving = _isMoving;
         _animations.IsFlying = IsFlying();
-        Debug.Log(_rigidbody.velocity.y);
+       // Debug.Log(_rigidbody.velocity.y);
     }
     private void Move()
     {
-        _input = new Vector2(Input.GetAxis("Horizontal"), 0);
+
+        if (isRightButtonDown)
+        {
+            _input = new Vector2(1, 0);
+            Debug.Log("R");
+        }
+        if (isLeftButtonDown)
+        {
+            _input = new Vector2(-1, 0);
+            Debug.Log("L");
+        }
+        if (!isLeftButtonDown && !isRightButtonDown)
+        {
+            _input = new Vector2(0, 0);
+        }
+       // _input = new Vector2(Input.GetAxis("Horizontal"), 0); //управление для стрелок на пк
         transform.position += _input * _speed * Time.deltaTime;
         _isMoving = _input.x != 0 ? true : false;
      

@@ -133,7 +133,7 @@ public class HealthBar : MonoBehaviour
     {
         if (collision.tag == "Mace")
         {
-            Debug.Log("Mace!");
+           // Debug.Log("Mace!");
            // PlayAudioClip(damageAudioClip);
             fill -= Time.deltaTime * 0.2f;
             _rigidbody.AddForce(transform.up * 0.25f, ForceMode2D.Impulse);
