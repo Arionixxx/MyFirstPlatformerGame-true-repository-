@@ -15,6 +15,12 @@ public class AtackScript : MonoBehaviour
         
     }
 
+    public void OnAtackButtonClick()
+    {
+        Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+        PlayAudioClip(fireInstantiateClip);
+    }
+
     public void PlayAudioClip(AudioClip clipAudio)
     {
         GetComponent<AudioSource>().PlayOneShot(clipAudio);

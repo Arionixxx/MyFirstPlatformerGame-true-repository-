@@ -44,6 +44,7 @@ public class CharacterMovement : MonoBehaviour
 
     public bool isRightButtonDown;
     public bool isLeftButtonDown;
+    public bool isSensoryJump;
 
     
 
@@ -63,6 +64,32 @@ public class CharacterMovement : MonoBehaviour
     {
         isRightButtonDown = false;
         isLeftButtonDown = false;
+    }
+
+    public void OnSensoryJumpButtonDown()
+    {
+        isSensoryJump = true;
+
+
+        if (_isGrounded)
+        {
+            extraJump = extraJumpValue;
+        }
+
+        if (!isWater)
+        {
+            if (extraJump > 0)
+            {
+                Jump();
+                _animations.Jump();
+                extraJump--;
+            }
+        }
+    }
+
+    public void OnSensoryJumpButtonUp()
+    {
+        isSensoryJump = false;
     }
 
     public void PlayAudioClip(AudioClip clipAudio)
