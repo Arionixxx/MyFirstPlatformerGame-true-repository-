@@ -45,6 +45,7 @@ public class CharacterMovement : MonoBehaviour
     public bool isRightButtonDown;
     public bool isLeftButtonDown;
     public bool isSensoryJump;
+    public bool isSensorySwim;
 
     
 
@@ -66,11 +67,17 @@ public class CharacterMovement : MonoBehaviour
         isLeftButtonDown = false;
     }
 
+    public void OnSensorySwim()
+    {
+        isSensorySwim = true;
+    }
     public void OnSensoryJumpButtonDown()
     {
         isSensoryJump = true;
 
 
+
+        CheckGround();
         if (_isGrounded)
         {
             extraJump = extraJumpValue;
@@ -90,6 +97,7 @@ public class CharacterMovement : MonoBehaviour
     public void OnSensoryJumpButtonUp()
     {
         isSensoryJump = false;
+        isSensorySwim = false;
     }
 
     public void PlayAudioClip(AudioClip clipAudio)
@@ -130,6 +138,11 @@ public class CharacterMovement : MonoBehaviour
                 extraJump--;
             }
         }
+
+        if (isWater)
+        {
+            extraJump = 0;
+        }
     }
     private void FixedUpdate()
     {
@@ -137,22 +150,23 @@ public class CharacterMovement : MonoBehaviour
       //  fireForMovementScript = _fireballSprite;
         Move();
         CheckGround();
-    /*    if (Input.GetKeyDown(KeyCode.Space) && !isWater)
-        {
-            if (_isGrounded)
+        /*    if (Input.GetKeyDown(KeyCode.Space) && !isWater)
             {
-                Jump();
-                isSecondJump = true;
-                _animations.Jump();
-                if (Input.GetKeyDown(KeyCode.Space) && isSecondJump)
+                if (_isGrounded)
                 {
                     Jump();
-                   // isSecondJump = false;
+                    isSecondJump = true;
+                    _animations.Jump();
+                    if (Input.GetKeyDown(KeyCode.Space) && isSecondJump)
+                    {
+                        Jump();
+                       // isSecondJump = false;
+                    }
                 }
-            }
-        } */
+            } */
 
-        if (Input.GetKey(KeyCode.Space) && isWater)
+        // if (Input.GetKey(KeyCode.Space) && isWater) //для клавы
+        if (isSensorySwim  && isWater)
         {
             _rigidbody.gravityScale = 0;
 
@@ -160,7 +174,8 @@ public class CharacterMovement : MonoBehaviour
             
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && isWater)
+        //if (Input.GetKeyUp(KeyCode.Space) && isWater)//для клавы
+        if (!isSensorySwim  && isWater)
         {
             _rigidbody.gravityScale = 0.8f;
         }
@@ -266,7 +281,7 @@ public class CharacterMovement : MonoBehaviour
         Vector3 rayStartPositionMiddle = checkGroundMiddle.transform.position + _groundCheckOffset;
         RaycastHit2D hitMiddle = Physics2D.Raycast(rayStartPositionMiddle, transform.TransformDirection(Vector3.down), rayLength, groundMask);
 
-        if (hitLeft.collider != null  || hitRight.collider != null || hitMiddle.collider != null)
+        if (hitLeft.collider != null || hitRight.collider != null || hitMiddle.collider != null && !hitMiddle.collider.CompareTag("swimWater"))
         {
            // _isGrounded =  hitLeft.collider.CompareTag("Ground") || hitRight.collider.CompareTag("Ground") || hitMiddle.collider.CompareTag("Ground");
          _isGrounded = true;
