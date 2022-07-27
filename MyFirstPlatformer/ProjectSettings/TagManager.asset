@@ -3,32 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ground
-  - Coins
-  - NyanCat
-  - MoneyBox
-  - Fire
-  - Mace
-  - healthPotion
-  - fireball
-  - Water
-  - Reverse
-  - swimWater
-  - Bullet
-  - trapPlate
-  - Bomb
-  - Arrow
-  - ArrowDestr
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - trapPlate
-  - hp
+  - 
+  - 
   - 
   - 
   - 

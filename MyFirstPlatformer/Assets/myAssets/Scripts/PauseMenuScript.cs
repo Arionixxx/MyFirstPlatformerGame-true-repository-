@@ -8,6 +8,12 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject pauseMenu;
     public bool isGamePaused = false;
 
+    public bool isSensoryPauseActive;
+
+    public void OnSensoryPauseClick()
+    {
+        isSensoryPauseActive = true;
+    }
     public void continueButton()
     {
         pauseMenu.SetActive(false);
@@ -33,7 +39,7 @@ public class PauseMenuScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || isSensoryPauseActive)
         {
             if (!isGamePaused)
             {
@@ -41,6 +47,7 @@ public class PauseMenuScript : MonoBehaviour
                 isGamePaused = true;
                 Time.timeScale = 0;
                 Debug.Log("pause");
+                isSensoryPauseActive = false;
             }
             else
             {
