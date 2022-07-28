@@ -111,13 +111,14 @@ public class CharacterMovement : MonoBehaviour
         extraJumpValue = 1;//change!!!
         extraJump = extraJumpValue;
         speedValue = 5;//change it
-        jumpForceValue = 12;//and it
+        jumpForceValue = 16;//and it
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<CharactersAnimations>();
         timeDestroyFireball = startTimeDestroyFireball;
         _speed = speedValue;
         _jumpForce = jumpForceValue;
         _swimDirection = Vector3.up;
+        _rigidbody.gravityScale = 2.6f;
         
     }
 
@@ -331,7 +332,7 @@ public class CharacterMovement : MonoBehaviour
         if (collision.tag == "swimWater")
         {
             _speed = speedValue;
-            _rigidbody.gravityScale = 1.6f;
+            _rigidbody.gravityScale = 2.6f;
             _jumpForce = jumpForceValue;
             isWater = false;
             Debug.Log("it`s NOT water");
