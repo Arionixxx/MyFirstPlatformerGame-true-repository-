@@ -76,12 +76,13 @@ public class CharacterMovement : MonoBehaviour
         isSensoryJump = true;
         isSensorySwim = true;//added
 
-
+    /*
         CheckGround();
         if (_isGrounded)
         {
             extraJump = extraJumpValue;
         }
+        */
 
         if (!isWater)
         {
