@@ -52,13 +52,13 @@ public class CharacterMovement : MonoBehaviour
     public void OnLeftButtonDown()
     {
         isLeftButtonDown = true;
-        Debug.Log("left arrow");
+      //  Debug.Log("left arrow");
     }
     
     public void OnRightButtonDown()
     {
         isRightButtonDown = true;
-        Debug.Log("right arrow");
+      //  Debug.Log("right arrow");
     }
 
     public void OnButtonUp()
@@ -69,12 +69,12 @@ public class CharacterMovement : MonoBehaviour
 
     public void OnSensorySwim()
     {
-        isSensorySwim = true;
+       // isSensorySwim = true;
     }
     public void OnSensoryJumpButtonDown()
     {
         isSensoryJump = true;
-
+        isSensorySwim = true;//added
 
 
         CheckGround();
