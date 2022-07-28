@@ -24,6 +24,16 @@ public class HealthBar : MonoBehaviour
     public GameObject fireDamageAudio;
 
     public bool isHeroDie;
+    public bool invincibility;
+    public bool invincibilityCoroutine;
+
+    IEnumerator invincibilityOn()
+    {
+        invincibility = true;
+        yield return new WaitForSeconds(0.5f);
+        invincibility = false;
+        invincibilityCoroutine = false;
+    }
 
     IEnumerator RestartLevel()
     {
@@ -52,9 +62,16 @@ public class HealthBar : MonoBehaviour
     void Update()
     {   
         
-        if (damageInFire == true)
+        if (damageInFire == true && !invincibility)
         {
-            fill -= Time.deltaTime * 0.05f;
+
+            // fill -= Time.deltaTime * 1.5f;
+            fill -= 0.05f;
+            if (!invincibilityCoroutine)
+            {
+                StartCoroutine(invincibilityOn());
+                invincibilityCoroutine = true;
+            }
             
         }
         bar.fillAmount = fill;
@@ -100,16 +117,26 @@ public class HealthBar : MonoBehaviour
             fill = 0;
         }
 
-        if (collision.tag == "Bomb")
+        if (collision.tag == "Bomb" && !invincibility)
         {
             fill -= 0.3f;
             PlayAudioClip(damageAudioClip);
+            if (!invincibilityCoroutine)
+            {
+                StartCoroutine(invincibilityOn());
+                invincibilityCoroutine = true;
+            }
         }
 
-        if (collision.tag == "Arrow")
+        if (collision.tag == "Arrow" && !invincibility)
         {
             fill -= 0.2f;
             PlayAudioClip(damageAudioClip);
+            if (!invincibilityCoroutine)
+            {
+                StartCoroutine(invincibilityOn());
+                invincibilityCoroutine = true;
+            }
         }
 
     }
@@ -131,13 +158,18 @@ public class HealthBar : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)//Mace hit player
     {
-        if (collision.tag == "Mace")
+        if (collision.tag == "Mace" && !invincibility)
         {
            // Debug.Log("Mace!");
            // PlayAudioClip(damageAudioClip);
-            fill -= Time.deltaTime * 0.2f;
+            fill -= 0.1f;
             _rigidbody.AddForce(transform.up * 0.25f, ForceMode2D.Impulse);
             _rigidbody.AddForce(-transform.right * 0.05f, ForceMode2D.Impulse);
+            if (!invincibilityCoroutine)
+            {
+                StartCoroutine(invincibilityOn());
+                invincibilityCoroutine = true;
+            }
         }
         
         if (collision.tag == "Fire")
