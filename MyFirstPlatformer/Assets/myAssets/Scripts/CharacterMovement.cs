@@ -73,7 +73,7 @@ public class CharacterMovement : MonoBehaviour
     }
     public void OnSensoryJumpButtonDown()
     {
-        isSensoryJump = true;
+     //   isSensoryJump = true;//test
         isSensorySwim = true;//added
 
     /*
