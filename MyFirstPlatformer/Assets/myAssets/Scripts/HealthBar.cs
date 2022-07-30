@@ -22,6 +22,7 @@ public class HealthBar : MonoBehaviour
     public AudioClip dieMessClip;
     public AudioClip hpBottleClip;
     public GameObject fireDamageAudio;
+    public GameObject RIP;
 
     public bool isHeroDie;
     public bool invincibility;
@@ -80,9 +81,13 @@ public class HealthBar : MonoBehaviour
         {
             dieTextMessage.SetActive(true);
             isHeroDie = true;
+            
+            
+            Instantiate(RIP, transform.position, Quaternion.identity);
             StartCoroutine(RestartLevel());
             RestartLevel();
-           
+            gameObject.SetActive(false);
+
         }
     }
 

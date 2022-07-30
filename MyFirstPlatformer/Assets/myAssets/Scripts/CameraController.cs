@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public float dumping = 2.5f; //sglazhivanie
+    public float dumping = 1.5f; //sglazhivanie
     public Vector2 offset = new Vector2(2f, 1f);
     public bool isLeft;//is player looking at left
     private Transform player; //place of player
