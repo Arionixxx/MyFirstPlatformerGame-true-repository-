@@ -83,9 +83,9 @@ public class HealthBar : MonoBehaviour
             isHeroDie = true;
             
             
-            Instantiate(RIP, transform.position, Quaternion.identity);
-            StartCoroutine(RestartLevel());
-            RestartLevel();
+            Instantiate(RIP, new Vector3 (transform.position.x, transform.position.y, 1), Quaternion.identity);
+           // StartCoroutine(RestartLevel());
+          //  RestartLevel();
             gameObject.SetActive(false);
 
         }
