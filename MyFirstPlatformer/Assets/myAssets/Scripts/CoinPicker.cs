@@ -12,6 +12,11 @@ public class CoinPicker : MonoBehaviour
     public GameObject star2;
     public GameObject star3;
     public GameObject lvlCompleteText;
+    public GameObject controllersUI;
+    public GameObject finishPanel;
+    public GameObject hpBar;
+    public GameObject coinsBar;
+    public GameObject pauseBar;
 
     public TMP_Text coinsText;
     public AudioClip clipCoins;
@@ -68,6 +73,11 @@ public class CoinPicker : MonoBehaviour
                 PlayAudioClip(clipFinish);
                 isLvLEnded = true;
             }
+            controllersUI.SetActive(false);
+            hpBar.SetActive(false);
+            coinsBar.SetActive(false);
+            pauseBar.SetActive(false);
+            finishPanel.SetActive(true);
             StartCoroutine(lvlEndCoroutine());
         }
  
