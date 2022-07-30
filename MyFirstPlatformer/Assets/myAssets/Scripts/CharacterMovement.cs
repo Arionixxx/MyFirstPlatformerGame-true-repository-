@@ -111,7 +111,7 @@ public class CharacterMovement : MonoBehaviour
     {
         extraJumpValue = 1;//change!!!
         extraJump = extraJumpValue;
-        speedValue = 5;//change it
+        speedValue = 7;//change it
         jumpForceValue = 16;//and it
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<CharactersAnimations>();
@@ -320,7 +320,7 @@ public class CharacterMovement : MonoBehaviour
             {
                 PlayAudioClip(waterClip);
             }
-            _speed = 2.5f;
+            _speed = speedValue/2;
             _rigidbody.gravityScale = 0.8f;
             _jumpForce = 5;
             isWater = true;
