@@ -9,6 +9,8 @@ public class lvlRestartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("die!");
+      //  PlayAudioClip(dieMessClip);
         StartCoroutine(RestartLevel());
     }
 
@@ -18,7 +20,7 @@ public class lvlRestartScript : MonoBehaviour
     }
     IEnumerator RestartLevel()
     {
-        PlayAudioClip(dieMessClip);
+       
         yield return new WaitForSeconds(3);
         //SceneManager.LoadScene("SampleScene");
         //  Debug.Log("you die!");

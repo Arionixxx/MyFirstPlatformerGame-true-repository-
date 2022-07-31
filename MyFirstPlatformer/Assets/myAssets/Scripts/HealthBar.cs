@@ -84,7 +84,7 @@ public class HealthBar : MonoBehaviour
             
             
             Instantiate(RIP, new Vector3 (transform.position.x, transform.position.y, 1), Quaternion.identity);
-           // StartCoroutine(RestartLevel());
+            StartCoroutine(RestartLevel());
           //  RestartLevel();
             gameObject.SetActive(false);
 
