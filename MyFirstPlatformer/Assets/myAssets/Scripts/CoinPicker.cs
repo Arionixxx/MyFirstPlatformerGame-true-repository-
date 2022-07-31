@@ -18,6 +18,8 @@ public class CoinPicker : MonoBehaviour
     public GameObject coinsBar;
     public GameObject pauseBar;
 
+
+    public TMP_Text finishCoinsText;
     public TMP_Text coinsText;
     public AudioClip clipCoins;
     public AudioClip clipFinish;
@@ -78,6 +80,7 @@ public class CoinPicker : MonoBehaviour
             coinsBar.SetActive(false);
             pauseBar.SetActive(false);
             finishPanel.SetActive(true);
+            finishCoinsText.text = ($"Coins count: {coins.ToString()}");
             StartCoroutine(lvlEndCoroutine());
         }
  
