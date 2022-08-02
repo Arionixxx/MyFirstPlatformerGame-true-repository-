@@ -7,8 +7,8 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
 {
     public static InterstitialAd S;
 
-    [SerializeField] private string _androidUnitId = "Interstitial_Android"; 
-   // [SerializeField] private string _androidUnitId = "Rewarded_Android";
+   // [SerializeField] private string _androidUnitId = "Interstitial_Android"; 
+    [SerializeField] private string _androidUnitId = "Rewarded_Android";
     [SerializeField] private string _iOSAdUnitId = "Interstitial_iOS";
 
     private string _adUnitId;
@@ -16,7 +16,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     void Awake()
     {
         S = this;
-        InterstitialAd.S.LoadAd();//mb move in another script 
+      //  InterstitialAd.S.LoadAd();//mb move in another script 
         _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
             ? _iOSAdUnitId
             : _androidUnitId;
@@ -41,7 +41,8 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
+        // Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
+        Debug.Log("FAIL");//вот тут оно стопорится :с 
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
