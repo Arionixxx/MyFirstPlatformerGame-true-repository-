@@ -28,7 +28,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete. ");
-        InterstitialAd.S.LoadAd();
+        InterstitialAd.S.LoadAd();//test
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
