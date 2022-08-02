@@ -10,7 +10,8 @@ public class lvlRestartScript : MonoBehaviour
     void Start()
     {
         Debug.Log("die!");
-        InterstitialAd.S.ShowAd();
+      //  InterstitialAd.S.ShowAd();
+        RewardedAds.S.ShowAd();
       //  PlayAudioClip(dieMessClip);
         StartCoroutine(RestartLevel());
     }

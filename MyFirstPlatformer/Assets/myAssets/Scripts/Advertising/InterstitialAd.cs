@@ -8,7 +8,6 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     public static InterstitialAd S;
 
     [SerializeField] private string _androidUnitId = "Interstitial_Android"; 
-  //  [SerializeField] private string _androidUnitId = "Rewarded_Android";
     [SerializeField] private string _iOSAdUnitId = "Interstitial_iOS";
 
     private string _adUnitId;
