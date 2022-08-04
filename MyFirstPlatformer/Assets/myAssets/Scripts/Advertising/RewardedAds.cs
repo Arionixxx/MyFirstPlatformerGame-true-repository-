@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
 
 public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -49,6 +50,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
         Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
+        StartCoroutine(RestartLevel());
     }
 
     public void OnUnityAdsShowStart(string placementId)
@@ -63,8 +65,9 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
-       // LoadAd();
-       if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
+        // LoadAd();
+        if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
+       // if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.SKIPPED))
         {
             Debug.Log("Unity ads rewarded ad completed. ");
             playerHero.SetActive(true);
@@ -80,6 +83,13 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         }
     }
 
+    IEnumerator RestartLevel()
+    {
 
+        yield return new WaitForSeconds(3);
+        //SceneManager.LoadScene("SampleScene");
+        //  Debug.Log("you die!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+    }
 
 }
