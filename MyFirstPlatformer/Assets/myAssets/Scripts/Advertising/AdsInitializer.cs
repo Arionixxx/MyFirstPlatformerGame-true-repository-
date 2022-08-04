@@ -11,6 +11,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 
     private string _gameId;
 
+    public static bool isAdvertisementInitialized;
+
     private void Awake()
     {
         InitializeAds();
@@ -29,10 +31,12 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     {
         Debug.Log("Unity Ads initialization complete. ");
         InterstitialAd.S.LoadAd();//test
+        isAdvertisementInitialized = true;
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
         Debug.Log($"Unity Ads initialization failed: {error.ToString()} - {message}");
+        isAdvertisementInitialized = false;
     }
 }

@@ -15,6 +15,8 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     private string _adUnitId;
 
+    public static bool isRewardAdvertisementAvailible;
+
     void Awake()
     {
         S = this;
@@ -40,11 +42,13 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     {
         //successfully loaded content
         Debug.Log("Success!");
+        isRewardAdvertisementAvailible = true;
     }
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
          Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
+        isRewardAdvertisementAvailible = false;
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
@@ -79,7 +83,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
             Advertisement.Load(_adUnitId, this);
         } else
         {
-            Debug.Log("Do reload");
+            StartCoroutine(RestartLevel());
         }
     }
 
