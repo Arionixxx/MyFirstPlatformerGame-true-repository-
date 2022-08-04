@@ -13,7 +13,7 @@ public class lvlRestartScript : MonoBehaviour
       //  InterstitialAd.S.ShowAd();
         RewardedAds.S.ShowAd();
       //  PlayAudioClip(dieMessClip);
-        StartCoroutine(RestartLevel());
+      //  StartCoroutine(RestartLevel());
     }
 
     public void PlayAudioClip(AudioClip clipAudio)

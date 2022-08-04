@@ -43,6 +43,7 @@ public class PauseMenuScript : MonoBehaviour
         {
             if (!isGamePaused)
             {
+                InterstitialAd.S.ShowAd();
                 pauseMenu.SetActive(true);
                 isGamePaused = true;
                 Time.timeScale = 0;

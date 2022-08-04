@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class HealthBar : MonoBehaviour
 {
     public Image bar;
-    public float fill;
+    public static float fill;
     public GameObject fire;
     public bool damageInFire = false;
     public GameObject healthPotion;
@@ -24,7 +24,7 @@ public class HealthBar : MonoBehaviour
     public GameObject fireDamageAudio;
     public GameObject RIP;
 
-    public bool isHeroDie;
+    public static bool isHeroDie;
     public bool invincibility;
     public bool invincibilityCoroutine;
 
@@ -79,13 +79,15 @@ public class HealthBar : MonoBehaviour
 
         if (fill <= 0 && !isHeroDie)
         {
-            dieTextMessage.SetActive(true);
+           // dieTextMessage.SetActive(true);
             isHeroDie = true;
             
             
             Instantiate(RIP, new Vector3 (transform.position.x, transform.position.y, 1), Quaternion.identity);
-           // StartCoroutine(RestartLevel());
-          //  RestartLevel();
+            // StartCoroutine(RestartLevel());
+            //  RestartLevel();
+            invincibility = false;
+            invincibilityCoroutine = false;
             gameObject.SetActive(false);
 
         }

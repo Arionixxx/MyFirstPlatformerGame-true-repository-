@@ -10,6 +10,8 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     [SerializeField] private string _androidUnitId = "Rewarded_Android";
     [SerializeField] private string _iOSAdUnitId = "Rewarded_iOS";
 
+    [SerializeField] private GameObject playerHero;
+
     private string _adUnitId;
 
     void Awake()
@@ -65,12 +67,16 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
        if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
             Debug.Log("Unity ads rewarded ad completed. ");
+            playerHero.SetActive(true);
+            HealthBar.fill = 1f;
+            HealthBar.isHeroDie = false;
+           // HealthBar.invincibility = false;
             //добавить действие с наградой 
             //
             Advertisement.Load(_adUnitId, this);
         } else
         {
-            //reload lvl
+            Debug.Log("Do reload");
         }
     }
 
