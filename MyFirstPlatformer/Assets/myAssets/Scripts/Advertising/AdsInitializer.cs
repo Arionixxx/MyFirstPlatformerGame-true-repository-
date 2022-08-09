@@ -38,5 +38,6 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     {
         Debug.Log($"Unity Ads initialization failed: {error.ToString()} - {message}");
         isAdvertisementInitialized = false;
+        InitializeAds();//delete it
     }
 }

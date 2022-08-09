@@ -19,6 +19,15 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
         _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
             ? _iOSAdUnitId
             : _androidUnitId;
+
+        StartCoroutine(loadAdsCoroutine());
+    }
+
+    IEnumerator loadAdsCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        LoadAd();
+
     }
 
     public void LoadAd()
@@ -43,16 +52,19 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     {
         // Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
         Debug.Log("FAIL");//вот тут оно стопорится :с 
+        StartCoroutine(loadAdsCoroutine());
+
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
         Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");//тут тоже поломано, соответственно 
+        Debug.Log("ITS FAIL HERE!");//delete it
     }
 
     public void OnUnityAdsShowStart(string placementId)
     {
-        throw new System.NotImplementedException();
+       // throw new System.NotImplementedException();
     }
 
     public void OnUnityAdsShowClick(string placementId)

@@ -29,7 +29,11 @@ public class PauseMenuScript : MonoBehaviour
     }
 
 
-
+    IEnumerator adsCoroutine()
+    {
+        yield return new WaitForSeconds(3);
+        InterstitialAd.S.ShowAd();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,8 @@ public class PauseMenuScript : MonoBehaviour
         {
             if (!isGamePaused)
             {
-                InterstitialAd.S.ShowAd();
+                 InterstitialAd.S.ShowAd();
+               // StartCoroutine(adsCoroutine());
                 pauseMenu.SetActive(true);
                 isGamePaused = true;
                 Time.timeScale = 0;

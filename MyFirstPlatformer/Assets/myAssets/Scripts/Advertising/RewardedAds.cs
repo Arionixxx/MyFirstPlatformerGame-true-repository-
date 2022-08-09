@@ -24,6 +24,15 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
             ? _iOSAdUnitId
             : _androidUnitId;
+
+        StartCoroutine(loadAdsCoroutine());
+    }
+
+    IEnumerator loadAdsCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        LoadAd();
+
     }
 
     public void LoadAd()
@@ -49,6 +58,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     {
          Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
         isRewardAdvertisementAvailible = false;
+        StartCoroutine(loadAdsCoroutine());
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
@@ -59,7 +69,8 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     public void OnUnityAdsShowStart(string placementId)
     {
-        throw new System.NotImplementedException();
+        //  throw new System.NotImplementedException();
+        Debug.Log("ads started!");
     }
 
     public void OnUnityAdsShowClick(string placementId)

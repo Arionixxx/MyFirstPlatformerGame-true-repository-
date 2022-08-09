@@ -11,7 +11,8 @@ public class lvlRestartScript : MonoBehaviour
     {
         Debug.Log("die!");
       //  InterstitialAd.S.ShowAd();
-        RewardedAds.S.ShowAd();
+       // RewardedAds.S.ShowAd();
+        StartCoroutine(StartRewardedAds());
         //  PlayAudioClip(dieMessClip);
         // if (!AdsInitializer.isAdvertisementInitialized && !RewardedAds.isRewardAdvertisementAvailible)
         if (!AdsInitializer.isAdvertisementInitialized)
@@ -33,6 +34,13 @@ public class lvlRestartScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
     }
 
+    IEnumerator StartRewardedAds()
+    {
+        yield return new WaitForSeconds(1.5f);
+        RewardedAds.S.ShowAd();
+
+
+    }
     // Update is called once per frame
     void Update()
     {
