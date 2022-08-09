@@ -16,6 +16,13 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     private void Awake()
     {
         InitializeAds();
+        StartCoroutine(InitializeCoroutine());
+    }
+
+    IEnumerator InitializeCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        InitializeAds();
     }
 
     public void InitializeAds()
@@ -38,6 +45,6 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     {
         Debug.Log($"Unity Ads initialization failed: {error.ToString()} - {message}");
         isAdvertisementInitialized = false;
-        InitializeAds();//delete it
+       StartCoroutine(InitializeCoroutine());//delete it
     }
 }

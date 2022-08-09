@@ -74,7 +74,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        LoadAd();
+        StartCoroutine(loadAdsCoroutine());
     }
 
    
