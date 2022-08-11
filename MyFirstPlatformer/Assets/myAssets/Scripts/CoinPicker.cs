@@ -82,6 +82,7 @@ public class CoinPicker : MonoBehaviour
             finishPanel.SetActive(true);
             finishCoinsText.text = ($"Coins count: {coins.ToString()}");
             StartCoroutine(lvlEndCoroutine());
+            GameAnalyticsScript.instance.OnLevelComplete(SceneManager.GetActiveScene().buildIndex + 0);
         }
  
     }
