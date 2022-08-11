@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9116437185210668172}
   - component: {fileID: 9116437185210668170}
   - component: {fileID: 2403351949871903565}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Chest Sheet-2048x512(1x)_0
   m_TagString: MoneyBox
   m_Icon: {fileID: 0}
